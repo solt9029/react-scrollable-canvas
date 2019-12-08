@@ -4,7 +4,7 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
-    "url": "https://github.com/solt9029/react-component-lib",
+    "url": "https://github.com/solt9029/react-scrollable-canvas",
     "type": "git"
   },
   "license": "MIT",

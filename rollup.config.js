@@ -14,7 +14,7 @@ export default [
       { file: pkg.main, format: 'cjs' },
       { file: pkg.module, format: 'esm' },
       {
-        file: 'example/src/reactComponentLib/index.js',
+        file: 'example/src/react-scrollable-canvas/index.js',
         format: 'es',
         banner: '/* eslint-disable */',
       },

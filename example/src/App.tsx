@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { TestComponent } from './reactComponentLib';
+import { TestComponent } from './react-scrollable-canvas';
 
 const StyledDiv = styled.div`
   padding: 10px;
