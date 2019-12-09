@@ -1,5 +1,7 @@
 {
   "name": "react-scrollable-canvas",
+  "description": "React component library that allows you to create scrollable canvas easily and quickly.",
+  "author": "Kenshi Shiode <atemu1212@yahoo.co.jp>",
   "version": "1.0.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
