@@ -1,6 +1,5 @@
-import { TestComponent } from './components/TestComponent';
-import Canvas from './components/Canvas';
-import ScrollableCanvas from './components/ScrollableCanvas';
-import ScrollableCanvasContainer from './components/ScrollableCanvasContainer';
+import Canvas from './Canvas';
+import ScrollableCanvas from './ScrollableCanvas';
+import ScrollableCanvasContainer from './ScrollableCanvasContainer';
 
-export { TestComponent, Canvas, ScrollableCanvas, ScrollableCanvasContainer };
+export { Canvas, ScrollableCanvas, ScrollableCanvasContainer };

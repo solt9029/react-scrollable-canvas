@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { ScrollableCanvas } from './react-scrollable-canvas/index';
+import { ScrollableCanvas } from './react-scrollable-canvas';
 
 export default class App extends Component {
   private canvasRef = React.createRef<HTMLCanvasElement>();
