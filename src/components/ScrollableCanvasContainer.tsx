@@ -33,7 +33,7 @@ export interface ScrollableCanvasContainerProps {
   height: number;
   largeWidth: number;
   largeHeight: number;
-  wait?: number;
+  wait: number;
   onScroll?: (scrollTop: number, scrollLeft: number) => void;
   children: React.ReactNode;
 }
@@ -41,23 +41,29 @@ export interface ScrollableCanvasContainerProps {
 export default class ScrollableCanvasContainer extends Component<ScrollableCanvasContainerProps, {}> {
   public static defaultProps: Partial<ScrollableCanvasContainerProps> = {
     wait: 10,
-    onScroll: (_scrollTop, _scrollLeft) => {
-      //
-    },
   };
 
-  ref = createRef<HTMLInputElement>();
+  private ref = createRef<HTMLDivElement>();
 
-  onScroll = throttle(() => {
+  private onScroll = throttle(() => {
+    if (this.ref.current === null || this.props.onScroll === undefined) {
+      return;
+    }
     const { scrollTop, scrollLeft } = this.ref.current;
     this.props.onScroll(scrollTop, scrollLeft);
   }, this.props.wait);
 
   componentDidMount() {
+    if (this.ref.current === null) {
+      return;
+    }
     this.ref.current.addEventListener('scroll', this.onScroll);
   }
 
   componentWillUnmount() {
+    if (this.ref.current === null) {
+      return;
+    }
     this.ref.current.removeEventListener('scroll', this.onScroll);
   }
 

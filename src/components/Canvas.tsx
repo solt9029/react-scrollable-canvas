@@ -7,7 +7,7 @@ export interface CanvasProps {
   translateY?: number;
 }
 
-export const Canvas = styled.canvas<CanvasProps>`
+const Canvas = styled.canvas<CanvasProps>`
   position: absolute;
   top: ${({ top }) => top};
   left: ${({ left }) => left};
@@ -22,3 +22,5 @@ Canvas.defaultProps = {
   translateX: 0,
   translateY: 0,
 };
+
+export default Canvas;
