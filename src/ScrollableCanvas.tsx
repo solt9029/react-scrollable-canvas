@@ -8,6 +8,7 @@ export interface ScrollableCanvasProps {
   largeWidth: number;
   largeHeight: number;
   wait: number;
+  noScrollBar: boolean;
   onScroll?: (scrollTop: number, scrollLeft: number) => void;
   canvasRef?: RefObject<HTMLCanvasElement>;
 }
@@ -28,6 +29,7 @@ const ScrollableCanvas = (props: ScrollableCanvasProps) => {
 
   return (
     <ScrollableCanvasContainer
+      noScrollBar={props.noScrollBar}
       onScroll={onScroll}
       wait={props.wait}
       width={props.width}
@@ -48,6 +50,7 @@ const ScrollableCanvas = (props: ScrollableCanvasProps) => {
 
 ScrollableCanvas.defaultProps = {
   wait: 10,
+  noScrollBar: false,
 };
 
 export default ScrollableCanvas;
