@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Collapse, Navbar as RSNavbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-const Navbar = () => {
+interface NavbarProps {
+  active?: string;
+}
+
+const Navbar = (props: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -15,12 +19,12 @@ const Navbar = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink tag={Link} to="/examples">
+            <NavLink tag={Link} to="/examples" active={props.active === 'examples'}>
               Examples
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink tag={Link} to="/docs">
+            <NavLink tag={Link} to="/docs" active={props.active === 'docs'}>
               Docs
             </NavLink>
           </NavItem>
