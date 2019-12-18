@@ -1,45 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
 
-import { ScrollableCanvas } from './react-scrollable-canvas';
+const Home = () => <h2>Home</h2>;
+const About = () => <h2>About</h2>;
 
-export default class App extends Component {
-  private canvasRef = React.createRef<HTMLCanvasElement>();
-  private ctx: CanvasRenderingContext2D | null = null;
+const App = () => {
+  return (
+    <div>
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+    </div>
+  );
+};
 
-  private draw = (scrollTop: number, scrollLeft: number) => {
-    if (this.ctx === null) {
-      return;
-    }
-    this.ctx.clearRect(0, 0, 300, 300);
-    this.ctx.fillRect(0 - scrollLeft, 190 - scrollTop, 30, 30);
-    this.ctx.fillRect(200 - scrollLeft, 190 - scrollTop, 30, 30);
-  };
-
-  private onScroll = (scrollTop: number, scrollLeft: number) => {
-    this.draw(scrollTop, scrollLeft);
-  };
-
-  componentDidMount() {
-    if (this.canvasRef.current === null) {
-      return;
-    }
-    this.ctx = this.canvasRef.current.getContext('2d');
-    this.draw(0, 0);
-  }
-
-  render() {
-    return (
-      <div>
-        <ScrollableCanvas
-          width={300}
-          height={300}
-          largeWidth={600}
-          largeHeight={600}
-          canvasRef={this.canvasRef}
-          onScroll={this.onScroll}
-          wait={10}
-        />
-      </div>
-    );
-  }
-}
+export default App;
