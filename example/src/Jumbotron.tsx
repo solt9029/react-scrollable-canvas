@@ -6,14 +6,18 @@ const Container = styled(RCContainer)`
   text-align: center;
 `;
 
+const SRCJumbotron = styled(RCJumbotron)`
+  margin-bottom: 0;
+`;
+
 const Jumbotron = () => {
   return (
-    <RCJumbotron>
+    <SRCJumbotron>
       <Container>
         <h1 className="display-3">React Scrollable Canvas</h1>
         <p className="lead">React component library that allows you to create scrollable canvas easily and quickly.</p>
       </Container>
-    </RCJumbotron>
+    </SRCJumbotron>
   );
 };
 

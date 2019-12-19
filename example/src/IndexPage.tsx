@@ -1,14 +1,14 @@
 import React from 'react';
 import Jumbotron from './Jumbotron';
 import Navbar from './Navbar';
-import { Container } from 'reactstrap';
+import ResizableCanvas from './ResizableCanvas';
 
 const IndexPage = () => {
   return (
     <>
       <Navbar />
       <Jumbotron />
-      <Container></Container>
+      <ResizableCanvas />
     </>
   );
 };
