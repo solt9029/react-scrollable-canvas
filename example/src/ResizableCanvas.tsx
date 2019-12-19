@@ -2,18 +2,18 @@ import React, { Component, createRef } from 'react';
 import { throttle } from 'lodash';
 import { ScrollableCanvas } from './react-scrollable-canvas';
 
-export default class ResizableCanvas extends Component<{}, { width: number }> {
+export default class ResizableCanvas extends Component<{}, { size: number }> {
   private canvasRef = createRef<HTMLCanvasElement>();
   private ctx: CanvasRenderingContext2D | null = null;
   private scrollTop = 0;
   private scrollLeft = 0;
   state = {
-    width: 300,
+    size: 300,
   };
 
   componentDidMount() {
     window.addEventListener('resize', this.onResize);
-    this.setState({ width: window.innerWidth });
+    this.setState({ size: window.innerWidth });
 
     if (this.canvasRef.current === null) {
       return;
@@ -30,16 +30,22 @@ export default class ResizableCanvas extends Component<{}, { width: number }> {
   }
 
   private onResize = throttle(() => {
-    this.setState({ width: window.innerWidth });
+    this.setState({ size: window.innerWidth });
   }, 10);
 
   private draw = (scrollTop: number, scrollLeft: number) => {
     if (this.ctx === null) {
       return;
     }
-    this.ctx.clearRect(0, 0, 300, 300);
-    this.ctx.fillRect(0 - scrollLeft, 190 - scrollTop, 30, 30);
-    this.ctx.fillRect(200 - scrollLeft, 190 - scrollTop, 30, 30);
+    this.ctx.clearRect(0, 0, this.state.size * 2, this.state.size * 2);
+    this.ctx.beginPath();
+    const gradient = this.ctx.createLinearGradient(-scrollLeft, -scrollTop, this.state.size * 2, this.state.size * 2);
+    gradient.addColorStop(0.0, 'rgb(255, 0, 0)');
+    gradient.addColorStop(0.5, 'rgb(0, 255, 0)');
+    gradient.addColorStop(1.0, 'rgb(0, 0, 255)');
+    this.ctx.fillStyle = gradient;
+    this.ctx.rect(-scrollLeft, -scrollTop, this.state.size * 2, this.state.size * 2);
+    this.ctx.fill();
   };
 
   private onScroll = (scrollTop: number, scrollLeft: number) => {
@@ -51,10 +57,10 @@ export default class ResizableCanvas extends Component<{}, { width: number }> {
   render() {
     return (
       <ScrollableCanvas
-        width={this.state.width}
-        height={this.state.width}
-        largeWidth={this.state.width * 2}
-        largeHeight={this.state.width * 2}
+        width={this.state.size}
+        height={this.state.size}
+        largeWidth={this.state.size * 2}
+        largeHeight={this.state.size * 2}
         canvasRef={this.canvasRef}
         onScroll={this.onScroll}
       />
