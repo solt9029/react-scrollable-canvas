@@ -9,14 +9,17 @@ export interface CanvasProps {
   translateY?: number;
 }
 
-const Canvas = styled.canvas<CanvasProps>`
+const Canvas = styled.canvas.attrs((props: CanvasProps) => ({
+  style: {
+    top: `${props.top}px`,
+    left: `${props.left}px`,
+    width: `${props.width}px`,
+    height: `${props.height}px`,
+    transform: `translate(${props.translateX}px, ${props.translateY}px)`,
+  },
+}))<CanvasProps>`
   position: absolute;
-  top: ${({ top }) => top}px;
-  left: ${({ left }) => left}px;
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
   outline: none;
-  transform: translate(${props => `${props.translateX}px, ${props.translateY}px`});
   overflow: hidden;
 `;
 
