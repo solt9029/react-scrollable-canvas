@@ -1,21 +1,25 @@
 import styled from 'styled-components';
+import { convertNumberToStringPx } from './utils';
 
 export interface CanvasProps {
-  top?: number;
-  left?: number;
-  width?: number;
-  height?: number;
-  translateX?: number;
-  translateY?: number;
+  top?: string | number;
+  left?: string | number;
+  width?: string | number;
+  height?: string | number;
+  translateX?: string | number;
+  translateY?: string | number;
 }
 
 const Canvas = styled.canvas.attrs((props: CanvasProps) => ({
   style: {
-    top: `${props.top}px`,
-    left: `${props.left}px`,
-    width: `${props.width}px`,
-    height: `${props.height}px`,
-    transform: `translate(${props.translateX}px, ${props.translateY}px)`,
+    top: convertNumberToStringPx(props.top),
+    left: convertNumberToStringPx(props.left),
+    width: convertNumberToStringPx(props.width),
+    height: convertNumberToStringPx(props.height),
+    transform: `translate(
+      ${convertNumberToStringPx(props.translateX)},
+      ${convertNumberToStringPx(props.translateY)}
+    )`,
   },
 }))<CanvasProps>`
   position: absolute;

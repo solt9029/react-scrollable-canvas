@@ -3,10 +3,10 @@ import Canvas from './Canvas';
 import ScrollableCanvasContainer from './ScrollableCanvasContainer';
 
 export interface ScrollableCanvasProps {
-  width: number;
-  height: number;
-  largeWidth: number;
-  largeHeight: number;
+  width: string | number;
+  height: string | number;
+  largeWidth: string | number;
+  largeHeight: string | number;
   wait: number;
   noScrollBar: boolean;
   onScroll?: (scrollTop: number, scrollLeft: number) => void;

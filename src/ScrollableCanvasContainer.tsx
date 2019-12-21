@@ -1,15 +1,16 @@
 import React, { createRef, Component } from 'react';
 import styled, { css } from 'styled-components';
 import { throttle } from 'lodash';
+import { convertNumberToStringPx } from './utils';
 
 export interface DivProps {
-  width: number;
-  height: number;
+  width: string | number;
+  height: string | number;
 }
 
 export const Div = styled.div<DivProps>`
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
+  width: ${({ width }) => convertNumberToStringPx(width)};
+  height: ${({ height }) => convertNumberToStringPx(height)};
 `;
 
 export interface ScrollContainerProps {
@@ -41,10 +42,10 @@ export const Stage = styled.div`
 `;
 
 export interface ScrollableCanvasContainerProps {
-  width: number;
-  height: number;
-  largeWidth: number;
-  largeHeight: number;
+  width: string | number;
+  height: string | number;
+  largeWidth: string | number;
+  largeHeight: string | number;
   wait: number;
   noScrollBar: boolean;
   onScroll?: (scrollTop: number, scrollLeft: number) => void;
