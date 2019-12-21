@@ -3,7 +3,7 @@ import { throttle } from 'lodash';
 import { ScrollableCanvas } from './react-scrollable-canvas';
 
 export default class ResizableCanvas extends Component<{}, { size: number }> {
-  private canvasRef = createRef<HTMLCanvasElement>();
+  private ref = createRef<HTMLCanvasElement>();
   private ctx: CanvasRenderingContext2D | null = null;
   private scrollTop = 0;
   private scrollLeft = 0;
@@ -15,10 +15,10 @@ export default class ResizableCanvas extends Component<{}, { size: number }> {
     window.addEventListener('resize', this.onResize);
     this.setState({ size: window.innerWidth });
 
-    if (this.canvasRef.current === null) {
+    if (this.ref.current === null) {
       return;
     }
-    this.ctx = this.canvasRef.current.getContext('2d');
+    this.ctx = this.ref.current.getContext('2d');
   }
 
   componentDidUpdate() {
@@ -61,7 +61,7 @@ export default class ResizableCanvas extends Component<{}, { size: number }> {
         height={this.state.size}
         largeWidth={this.state.size * 2}
         largeHeight={this.state.size * 2}
-        canvasRef={this.canvasRef}
+        innerRef={this.ref}
         onScroll={this.onScroll}
       />
     );

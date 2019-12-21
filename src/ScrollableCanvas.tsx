@@ -1,4 +1,4 @@
-import React, { useState, RefObject } from 'react';
+import React, { RefObject, Component } from 'react';
 import Canvas from './Canvas';
 import ScrollableCanvasContainer from './ScrollableCanvasContainer';
 
@@ -10,47 +10,53 @@ export interface ScrollableCanvasProps {
   wait: number;
   noScrollBar: boolean;
   onScroll?: (scrollTop: number, scrollLeft: number) => void;
-  canvasRef?: RefObject<HTMLCanvasElement>;
+  innerRef?: RefObject<HTMLCanvasElement>;
 }
 
-const ScrollableCanvas = (props: ScrollableCanvasProps) => {
-  const [scrollTop, setScrollTop] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+export interface ScrollableCanvasState {
+  scrollTop: number;
+  scrollLeft: number;
+}
 
-  const onScroll = (scrollTop: number, scrollLeft: number) => {
-    setScrollTop(scrollTop);
-    setScrollLeft(scrollLeft);
-
-    if (props.onScroll === undefined) {
-      return;
-    }
-    props.onScroll(scrollTop, scrollLeft);
+export default class ScrollableCanvas extends Component<ScrollableCanvasProps, ScrollableCanvasState> {
+  public static defaultProps: Partial<ScrollableCanvasProps> = {
+    wait: 10,
+    noScrollBar: false,
   };
 
-  return (
-    <ScrollableCanvasContainer
-      noScrollBar={props.noScrollBar}
-      onScroll={onScroll}
-      wait={props.wait}
-      width={props.width}
-      height={props.height}
-      largeWidth={props.largeWidth}
-      largeHeight={props.largeHeight}
-    >
-      <Canvas
-        ref={props.canvasRef}
-        width={props.width}
-        height={props.height}
-        translateX={scrollLeft}
-        translateY={scrollTop}
-      ></Canvas>
-    </ScrollableCanvasContainer>
-  );
-};
+  state = {
+    scrollTop: 0,
+    scrollLeft: 0,
+  };
 
-ScrollableCanvas.defaultProps = {
-  wait: 10,
-  noScrollBar: false,
-};
+  private onScroll = (scrollTop: number, scrollLeft: number) => {
+    this.setState({ scrollTop, scrollLeft });
 
-export default ScrollableCanvas;
+    if (this.props.onScroll === undefined) {
+      return;
+    }
+    this.props.onScroll(scrollTop, scrollLeft);
+  };
+
+  render() {
+    return (
+      <ScrollableCanvasContainer
+        noScrollBar={this.props.noScrollBar}
+        onScroll={this.onScroll}
+        wait={this.props.wait}
+        width={this.props.width}
+        height={this.props.height}
+        largeWidth={this.props.largeWidth}
+        largeHeight={this.props.largeHeight}
+      >
+        <Canvas
+          ref={this.props.innerRef}
+          width={this.props.width}
+          height={this.props.height}
+          translateX={this.state.scrollLeft}
+          translateY={this.state.scrollTop}
+        ></Canvas>
+      </ScrollableCanvasContainer>
+    );
+  }
+}

@@ -1,4 +1,4 @@
-import React, { createRef, Component } from 'react';
+import React, { createRef, Component, RefObject } from 'react';
 import styled, { css } from 'styled-components';
 import { throttle } from 'lodash';
 import { convertNumberToStringPx } from './utils';
@@ -49,6 +49,7 @@ export interface ScrollableCanvasContainerProps {
   wait: number;
   noScrollBar: boolean;
   onScroll?: (scrollTop: number, scrollLeft: number) => void;
+  innerRef?: RefObject<HTMLDivElement>;
   children: React.ReactNode;
 }
 
@@ -56,37 +57,40 @@ export default class ScrollableCanvasContainer extends Component<ScrollableCanva
   public static defaultProps: Partial<ScrollableCanvasContainerProps> = {
     wait: 10,
     noScrollBar: false,
+    innerRef: createRef<HTMLDivElement>(),
   };
 
-  private ref = createRef<HTMLDivElement>();
-
   private onScroll = throttle(() => {
-    if (this.ref.current === null || this.props.onScroll === undefined) {
+    if (
+      this.props.innerRef === undefined ||
+      this.props.innerRef.current === null ||
+      this.props.onScroll === undefined
+    ) {
       return;
     }
-    const { scrollTop, scrollLeft } = this.ref.current;
+    const { scrollTop, scrollLeft } = this.props.innerRef.current;
     this.props.onScroll(scrollTop, scrollLeft);
   }, this.props.wait);
 
   componentDidMount() {
-    if (this.ref.current === null) {
+    if (this.props.innerRef === undefined || this.props.innerRef.current === null) {
       return;
     }
-    this.ref.current.addEventListener('scroll', this.onScroll);
+    this.props.innerRef.current.addEventListener('scroll', this.onScroll);
   }
 
   componentWillUnmount() {
-    if (this.ref.current === null) {
+    if (this.props.innerRef === undefined || this.props.innerRef.current === null) {
       return;
     }
-    this.ref.current.removeEventListener('scroll', this.onScroll);
+    this.props.innerRef.current.removeEventListener('scroll', this.onScroll);
   }
 
   render() {
     const { width, height, largeWidth, largeHeight, noScrollBar, children } = this.props;
 
     return (
-      <ScrollContainer noScrollBar={noScrollBar} width={width} height={height} ref={this.ref}>
+      <ScrollContainer noScrollBar={noScrollBar} width={width} height={height} ref={this.props.innerRef}>
         <LargeContainer width={largeWidth} height={largeHeight}>
           <Stage>{children}</Stage>
         </LargeContainer>

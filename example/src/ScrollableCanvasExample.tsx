@@ -9,7 +9,7 @@ const CIRCLE_RADIUS = 5;
 const CIRCLE_SIZE = 30;
 
 export default class ScrollableCanvasExample extends Component {
-  private canvasRef = React.createRef<HTMLCanvasElement>();
+  private ref = React.createRef<HTMLCanvasElement>();
   private ctx: CanvasRenderingContext2D | null = null;
 
   private draw = (scrollTop: number, scrollLeft: number) => {
@@ -33,10 +33,10 @@ export default class ScrollableCanvasExample extends Component {
   };
 
   componentDidMount() {
-    if (this.canvasRef.current === null) {
+    if (this.ref.current === null) {
       return;
     }
-    this.ctx = this.canvasRef.current.getContext('2d');
+    this.ctx = this.ref.current.getContext('2d');
     this.draw(0, 0);
   }
 
@@ -48,7 +48,7 @@ export default class ScrollableCanvasExample extends Component {
           height={HEIGHT}
           largeWidth={LARGE_WIDTH}
           largeHeight={LARGE_HEIGHT}
-          canvasRef={this.canvasRef}
+          innerRef={this.ref}
           onScroll={this.onScroll}
           wait={1}
         />
