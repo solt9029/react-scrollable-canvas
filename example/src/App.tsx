@@ -1,15 +1,14 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import IndexPage from './IndexPage';
+import ExamplesPage from './ExamplesPage';
 import ScrollableCanvasExample from './ScrollableCanvasExample';
-
-const About = () => <h2>About</h2>;
 
 const App = () => {
   return (
     <>
       <Route exact path="/" component={IndexPage} />
-      <Route path="/about" component={About} />
+      <Route exact path="/examples" component={ExamplesPage} />
       <Route path="/example" component={ScrollableCanvasExample} />
     </>
   );
