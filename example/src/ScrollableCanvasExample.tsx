@@ -8,7 +8,7 @@ const LARGE_HEIGHT = 600;
 const CIRCLE_RADIUS = 5;
 const CIRCLE_SIZE = 30;
 
-export default class ScrollableCanvasExample extends Component {
+export default class ScrollableCanvasExample extends Component<{}, {}> {
   private canvasRef = createRef<HTMLCanvasElement>();
   private ctx: CanvasRenderingContext2D | null = null;
 

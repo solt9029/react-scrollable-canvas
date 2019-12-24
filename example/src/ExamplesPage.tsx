@@ -5,7 +5,12 @@ import styled from 'styled-components';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import ScrollableCanvasExample from './ScrollableCanvasExample';
 import ScrollableCanvasContainerExample from './ScrollableCanvasContainerExample';
-import { scrollableCanvasExampleCode, scrollableCanvasContainerExampleCode } from './constants';
+import ScrollableCanvasWithMeasureExample from './ScrollableCanvasWithMeasureExample';
+import {
+  scrollableCanvasExampleCode,
+  scrollableCanvasContainerExampleCode,
+  scrollableCanvasWithMeasureExampleCode,
+} from './constants';
 
 const Container = styled(RCContainer)`
   margin-top: 30px;
@@ -35,6 +40,15 @@ const ExamplesPage = () => {
         </ul>
         <ScrollableCanvasContainerExample />
         <StyledSyntaxHighlighter language="typescript">{scrollableCanvasContainerExampleCode}</StyledSyntaxHighlighter>
+
+        <h1>Example: ScrollableCanvas with ReactMeasure</h1>
+        <ul>
+          <li>It is possible to create canvas that matches the width of 100%.</li>
+        </ul>
+        <ScrollableCanvasWithMeasureExample />
+        <StyledSyntaxHighlighter language="typescript">
+          {scrollableCanvasWithMeasureExampleCode}
+        </StyledSyntaxHighlighter>
       </Container>
     </>
   );
