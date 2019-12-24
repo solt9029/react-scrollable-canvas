@@ -8,25 +8,21 @@ const LARGE_HEIGHT = 600;
 const CIRCLE_RADIUS = 5;
 const CIRCLE_SIZE = 30;
 
-interface ScrollableCanvasContainerExampleState {
-  scrollTop: number;
-  scrollLeft: number;
-}
-
-export default class ScrollableCanvasContainerExample extends Component<{}, ScrollableCanvasContainerExampleState> {
-  private frontCanvasRef = createRef<HTMLCanvasElement>();
-  private backCanvasRef = createRef<HTMLCanvasElement>();
-  private frontCtx: CanvasRenderingContext2D | null = null;
-  private backCtx: CanvasRenderingContext2D | null = null;
+export default class ScrollableCanvasContainerExample extends Component {
+  frontCanvasRef = createRef();
+  backCanvasRef = createRef();
+  frontCtx = null;
+  backCtx = null;
 
   state = {
     scrollTop: 0,
     scrollLeft: 0,
   };
 
-  private draw = () => {
+  draw = () => {
     const { scrollTop, scrollLeft } = this.state;
 
+    // draw canvas here.
     if (this.frontCtx !== null) {
       this.frontCtx.clearRect(0, 0, WIDTH, HEIGHT);
       for (let y = -scrollTop % CIRCLE_SIZE; y < HEIGHT - (scrollTop % CIRCLE_SIZE); y += CIRCLE_SIZE) {
@@ -38,7 +34,6 @@ export default class ScrollableCanvasContainerExample extends Component<{}, Scro
         }
       }
     }
-
     if (this.backCtx !== null) {
       this.backCtx.clearRect(0, 0, WIDTH, HEIGHT);
       this.backCtx.beginPath();
@@ -52,7 +47,7 @@ export default class ScrollableCanvasContainerExample extends Component<{}, Scro
     }
   };
 
-  private onScroll = (scrollTop: number, scrollLeft: number) => {
+  onScroll = (scrollTop, scrollLeft) => {
     this.setState({ scrollTop, scrollLeft });
   };
 

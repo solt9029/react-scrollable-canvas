@@ -11,23 +11,20 @@ const Div = styled.div`
   height: 300px;
 `;
 
-export default class ScrollableCanvasWithMeasureExample extends Component<{}, {}> {
-  private canvasRef = createRef<HTMLCanvasElement>();
-  private ctx: CanvasRenderingContext2D | null = null;
+export default class ScrollableCanvasWithMeasureExample extends Component {
+  canvasRef = createRef();
+  ctx = null;
 
   state = {
     canvas: { width: 0, height: 0 },
     scroll: { top: 0, left: 0 },
   };
 
-  private draw = () => {
-    if (this.ctx === null) {
-      return;
-    }
-
+  draw = () => {
     const { width, height } = this.state.canvas;
     const { top, left } = this.state.scroll;
 
+    // draw canvas here.
     this.ctx.clearRect(0, 0, width, height);
     for (let y = -top % CIRCLE_SIZE; y < height - (top % CIRCLE_SIZE); y += CIRCLE_SIZE) {
       for (let x = -left % CIRCLE_SIZE; x < width - (left % CIRCLE_SIZE); x += CIRCLE_SIZE) {
@@ -39,14 +36,12 @@ export default class ScrollableCanvasWithMeasureExample extends Component<{}, {}
     }
   };
 
-  private onScroll = (scrollTop: number, scrollLeft: number) => {
+  onScroll = (scrollTop, scrollLeft) => {
     this.setState({ scroll: { top: scrollTop, left: scrollLeft } });
   };
 
   componentDidMount() {
-    if (this.canvasRef.current !== null) {
-      this.ctx = this.canvasRef.current.getContext('2d');
-    }
+    this.ctx = this.canvasRef.current.getContext('2d');
   }
 
   componentDidUpdate() {
