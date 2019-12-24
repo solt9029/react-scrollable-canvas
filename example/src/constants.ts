@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { ScrollableCanvas } from './react-scrollable-canvas';
+export const scrollableCanvasExampleCode = `import React, { Component } from 'react';
+import { ScrollableCanvas } from 'react-scrollable-canvas';
 
 const WIDTH = 300;
 const HEIGHT = 300;
@@ -23,7 +23,7 @@ export default class ScrollableCanvasExample extends Component {
       for (let x = -scrollLeft % CIRCLE_SIZE; x < WIDTH - (scrollLeft % CIRCLE_SIZE); x += CIRCLE_SIZE) {
         this.ctx.beginPath();
         this.ctx.arc(x + CIRCLE_SIZE / 2, y + CIRCLE_SIZE / 2, CIRCLE_RADIUS, 0, 360, false);
-        this.ctx.fillStyle = `rgba(${(scrollLeft + x) / 2}, ${(scrollTop + y) / 2}, 128, 0.8)`;
+        this.ctx.fillStyle = \`rgba(\${(scrollLeft + x) / 2}, \${(scrollTop + y) / 2}, 128, 0.8)\`;
         this.ctx.fill();
       }
     }
@@ -51,3 +51,4 @@ export default class ScrollableCanvasExample extends Component {
     );
   }
 }
+`;
