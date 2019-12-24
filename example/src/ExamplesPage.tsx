@@ -43,7 +43,7 @@ const ExamplesPage = () => {
 
         <h1>Example: ScrollableCanvas with ReactMeasure</h1>
         <ul>
-          <li>It is possible to create canvas that matches the width of 100%.</li>
+          <li>It is possible to create scrollable canvas that matches the width of 100%.</li>
         </ul>
         <ScrollableCanvasWithMeasureExample />
         <StyledSyntaxHighlighter language="typescript">
