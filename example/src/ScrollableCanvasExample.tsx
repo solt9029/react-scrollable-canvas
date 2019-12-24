@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { ScrollableCanvas } from './react-scrollable-canvas';
 
 const WIDTH = 300;
@@ -9,7 +9,7 @@ const CIRCLE_RADIUS = 5;
 const CIRCLE_SIZE = 30;
 
 export default class ScrollableCanvasExample extends Component {
-  private canvasRef = React.createRef<HTMLCanvasElement>();
+  private canvasRef = createRef<HTMLCanvasElement>();
   private ctx: CanvasRenderingContext2D | null = null;
 
   private draw = (scrollTop: number, scrollLeft: number) => {
@@ -38,16 +38,14 @@ export default class ScrollableCanvasExample extends Component {
 
   render() {
     return (
-      <div>
-        <ScrollableCanvas
-          width={WIDTH}
-          height={HEIGHT}
-          largeWidth={LARGE_WIDTH}
-          largeHeight={LARGE_HEIGHT}
-          canvasRef={this.canvasRef}
-          onScroll={this.draw}
-        />
-      </div>
+      <ScrollableCanvas
+        width={WIDTH}
+        height={HEIGHT}
+        largeWidth={LARGE_WIDTH}
+        largeHeight={LARGE_HEIGHT}
+        canvasRef={this.canvasRef}
+        onScroll={this.draw}
+      />
     );
   }
 }
