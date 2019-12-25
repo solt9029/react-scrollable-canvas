@@ -1,8 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
-import { Container as RCContainer } from 'reactstrap';
+import { Container } from 'reactstrap';
 import styled from 'styled-components';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 import ScrollableCanvasExample from './ScrollableCanvasExample';
 import ScrollableCanvasContainerExample from './ScrollableCanvasContainerExample';
 import ScrollableCanvasWithMeasureExample from './ScrollableCanvasWithMeasureExample';
@@ -11,13 +10,9 @@ import {
   scrollableCanvasContainerExampleCode,
   scrollableCanvasWithMeasureExampleCode,
 } from './constants';
+import ExampleContent from './ExampleContent';
 
-const Container = styled(RCContainer)`
-  margin-top: 30px;
-  margin-bottom: 30px;
-`;
-
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
+const StyledContainer = styled(Container)`
   margin-top: 30px;
   margin-bottom: 30px;
 `;
@@ -26,30 +21,31 @@ const ExamplesPage = () => {
   return (
     <>
       <Navbar active="examples" />
-      <Container>
-        <h1>Example: ScrollableCanvas</h1>
-        <ul>
-          <li>ScrollableCanvas is very simple to use.</li>
-        </ul>
-        <ScrollableCanvasExample />
-        <StyledSyntaxHighlighter language="typescript">{scrollableCanvasExampleCode}</StyledSyntaxHighlighter>
+      <StyledContainer>
+        <ExampleContent
+          title="Example: ScrollableCanvas"
+          description="ScrollableCanvas is very simple to use."
+          code={scrollableCanvasExampleCode}
+        >
+          <ScrollableCanvasExample />
+        </ExampleContent>
 
-        <h1>Example: ScrollableCanvasContainer</h1>
-        <ul>
-          <li>It is possible to create some layers with ScrollableCanvasContainer and Canvas.</li>
-        </ul>
-        <ScrollableCanvasContainerExample />
-        <StyledSyntaxHighlighter language="typescript">{scrollableCanvasContainerExampleCode}</StyledSyntaxHighlighter>
+        <ExampleContent
+          title="Example: ScrollableCanvasContainer"
+          description="It is possible to create some layers with ScrollableCanvasContainer and Canvas."
+          code={scrollableCanvasContainerExampleCode}
+        >
+          <ScrollableCanvasContainerExample />
+        </ExampleContent>
 
-        <h1>Example: ScrollableCanvas with ReactMeasure</h1>
-        <ul>
-          <li>It is possible to create scrollable canvas that matches the width of 100%.</li>
-        </ul>
-        <ScrollableCanvasWithMeasureExample />
-        <StyledSyntaxHighlighter language="typescript">
-          {scrollableCanvasWithMeasureExampleCode}
-        </StyledSyntaxHighlighter>
-      </Container>
+        <ExampleContent
+          title="Example: ScrollableCanvas with ReactMeasure"
+          description="It is possible to create scrollable canvas that matches the width of 100%."
+          code={scrollableCanvasWithMeasureExampleCode}
+        >
+          <ScrollableCanvasWithMeasureExample />
+        </ExampleContent>
+      </StyledContainer>
     </>
   );
 };

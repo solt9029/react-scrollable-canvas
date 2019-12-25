@@ -5,7 +5,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 
 const StyledContainer = styled(Container)`
   margin-top: 30px;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 `;
 
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
@@ -17,7 +17,7 @@ interface ExampleContentProps {
   title: string;
   description: string;
   code: string;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const ExamplesContent = ({ title, description, code, children }: ExampleContentProps) => (
