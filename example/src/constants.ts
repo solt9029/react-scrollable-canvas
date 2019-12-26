@@ -1,5 +1,5 @@
 export const scrollableCanvasExampleCode = `import React, { Component, createRef } from 'react';
-import { ScrollableCanvas } from './react-scrollable-canvas';
+import { ScrollableCanvas } from 'react-scrollable-canvas';
 
 const WIDTH = 300;
 const HEIGHT = 300;
@@ -47,7 +47,7 @@ export default class ScrollableCanvasExample extends Component {
 `;
 
 export const scrollableCanvasContainerExampleCode = `import React, { Component, createRef } from 'react';
-import { ScrollableCanvasContainer, Canvas } from './react-scrollable-canvas';
+import { ScrollableCanvasContainer, Canvas } from 'react-scrollable-canvas';
 
 const WIDTH = 300;
 const HEIGHT = 300;
@@ -148,7 +148,7 @@ export default class ScrollableCanvasContainerExample extends Component {
 `;
 
 export const scrollableCanvasWithMeasureExampleCode = `import React, { Component, createRef } from 'react';
-import { ScrollableCanvas } from './react-scrollable-canvas';
+import { ScrollableCanvas } from 'react-scrollable-canvas';
 import Measure from 'react-measure';
 import styled from 'styled-components';
 
@@ -227,7 +227,7 @@ export default class ScrollableCanvasWithMeasureExample extends Component {
 `;
 
 export const scrollableClickableCanvasExampleCode = `import React, { Component, createRef } from 'react';
-import { ScrollableCanvas } from './react-scrollable-canvas';
+import { ScrollableCanvas } from 'react-scrollable-canvas';
 import styled from 'styled-components';
 
 const WIDTH = 300;

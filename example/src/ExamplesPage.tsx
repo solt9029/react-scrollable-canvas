@@ -42,7 +42,7 @@ const ExamplesPage = () => {
 
         <ExampleContent
           title="Example: ScrollableCanvas with ReactMeasure"
-          description="You can create scrollable canvas that matches the width of 100%."
+          description="You can create scrollable canvas that matches the width of 100% with react-measure library."
           code={scrollableCanvasWithMeasureExampleCode}
         >
           <ScrollableCanvasWithMeasureExample />

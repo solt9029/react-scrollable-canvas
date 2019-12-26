@@ -18,7 +18,7 @@ npm install react-scrollable-canvas --save
 
 ```js
 import React, { Component, createRef } from 'react';
-import { ScrollableCanvas } from './react-scrollable-canvas';
+import { ScrollableCanvas } from 'react-scrollable-canvas';
 
 const WIDTH = 300;
 const HEIGHT = 300;
