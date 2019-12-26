@@ -12,7 +12,7 @@ Install ``` react-scrollable-canvas ``` with npm:
 npm install react-scrollable-canvas --save
 ```
 
-## Examples
+## Example
 
 ![demo](https://github.com/solt9029/react-scrollable-canvas/blob/master/demo.gif)
 
