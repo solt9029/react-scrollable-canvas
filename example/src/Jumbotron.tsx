@@ -15,7 +15,7 @@ const Jumbotron = () => {
     <StyledRCJumbotron>
       <StyledContainer>
         <h1 className="display-3">React Scrollable Canvas</h1>
-        <p className="lead">React component library that allows you to create scrollable canvas easily and quickly.</p>
+        <p className="lead">React component library that you can create scrollable canvas easily and quickly.</p>
       </StyledContainer>
     </StyledRCJumbotron>
   );
