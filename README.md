@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/solt9029/react-scrollable-canvas.svg?branch=master)](https://travis-ci.com/solt9029/react-scrollable-canvas)
 
-react-scrollable-canvas is a React component library that allows you to create scrollable canvas easily and quickly.
+react-scrollable-canvas is a React component library that you can create scrollable canvas easily and quickly.
 
 ## Installation
 
