@@ -10,15 +10,13 @@ const StyledContainer = styled(Container)`
   margin-bottom: 30px;
 `;
 
-const DocsPage = () => {
-  return (
-    <>
-      <Navbar active="docs" />
-      <StyledContainer>
-        <ReactMarkdown source={docsMarkdown} />
-      </StyledContainer>
-    </>
-  );
-};
+const DocsPage = () => (
+  <>
+    <Navbar active="docs" />
+    <StyledContainer>
+      <ReactMarkdown source={docsMarkdown} />
+    </StyledContainer>
+  </>
+);
 
 export default DocsPage;

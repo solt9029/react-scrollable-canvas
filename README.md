@@ -92,3 +92,14 @@ export default class ScrollableCanvasExample extends Component {
 |noScrollbar|boolean|Hide scroll bar. Default value is false.|
 |onScroll|(scrollTop: number, scrollLeft: number) => void|This function is called when scrolled.|
 |children|React.ReactNode|Children of ScrollableCanvasContainer.|
+
+### Canvas Props
+
+|Name|Type|Description|
+|---|---|---|
+|width|number|Width css property. Default value is 500.|
+|height|number|Height css property. Default value is 500.|
+|translateX|number|translateX css property. Default value is 0.|
+|translateY|number|translateY css property. Default value is 0.|
+|top|number|top css property. Default value is 0.|
+|left|number|left css property. Default value is 0.|
