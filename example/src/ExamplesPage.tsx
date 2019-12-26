@@ -9,8 +9,10 @@ import {
   scrollableCanvasExampleCode,
   scrollableCanvasContainerExampleCode,
   scrollableCanvasWithMeasureExampleCode,
+  scrollableClickableCanvasExampleCode,
 } from './constants';
 import ExampleContent from './ExampleContent';
+import ScrollableClickableCanvasExample from './ScrollableClickableCanvasExample';
 
 const StyledContainer = styled(Container)`
   margin-top: 30px;
@@ -32,7 +34,7 @@ const ExamplesPage = () => {
 
         <ExampleContent
           title="Example: ScrollableCanvasContainer"
-          description="It is possible to create some layers with ScrollableCanvasContainer and Canvas."
+          description="You can create some layers with ScrollableCanvasContainer and Canvas."
           code={scrollableCanvasContainerExampleCode}
         >
           <ScrollableCanvasContainerExample />
@@ -40,10 +42,18 @@ const ExamplesPage = () => {
 
         <ExampleContent
           title="Example: ScrollableCanvas with ReactMeasure"
-          description="It is possible to create scrollable canvas that matches the width of 100%."
+          description="You can create scrollable canvas that matches the width of 100%."
           code={scrollableCanvasWithMeasureExampleCode}
         >
           <ScrollableCanvasWithMeasureExample />
+        </ExampleContent>
+
+        <ExampleContent
+          title="Example: ScrollableCanvas handling click events"
+          description="You can handle click events by wrapping ScrollableCanvas with div element."
+          code={scrollableClickableCanvasExampleCode}
+        >
+          <ScrollableClickableCanvasExample />
         </ExampleContent>
       </StyledContainer>
     </>
